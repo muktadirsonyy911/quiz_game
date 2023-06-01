@@ -1,23 +1,14 @@
 import 'package:get/get.dart';
+import 'package:quiz_game/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+
+  void onStartQuizTap() {
+    Get.toNamed(Routes.quiz);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void onViewHistoryTap() {
+    Get.toNamed(Routes.history);
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
