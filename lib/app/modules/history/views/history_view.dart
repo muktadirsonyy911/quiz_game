@@ -30,7 +30,7 @@ class HistoryView extends GetView<HistoryController> {
                   margin: 10.allPadding,
                   decoration: BoxDecoration(color: Get.theme.canvasColor, borderRadius: 5.0.circularRadius, boxShadow: [
                     BoxShadow(
-                      color: Get.theme.dividerColor.withOpacity(0.05),
+                      color: Get.theme.dividerColor.withOpacity(0.03),
                       spreadRadius: 5,
                       blurRadius: 7,
                       offset: const Offset(0, 3), // changes position of shadow

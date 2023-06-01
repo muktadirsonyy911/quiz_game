@@ -5,6 +5,7 @@ import 'package:quiz_game/app/commons/styles/text_style.dart';
 import 'package:quiz_game/app/commons/values/app_colors.dart';
 import 'package:quiz_game/app/commons/widgets/app_bar_widget.dart';
 import 'package:quiz_game/app/commons/widgets/custom_button_widget.dart';
+import 'package:quiz_game/app/modules/quiz/models/quiz_response_model.dart';
 import 'package:quiz_game/app/modules/result/controllers/result_controller.dart';
 
 class ResultView extends GetView<ResultController> {
@@ -28,14 +29,20 @@ class ResultView extends GetView<ResultController> {
               padding: EdgeInsets.zero,
               itemCount: controller.quizController.questionList.length,
               itemBuilder: (BuildContext context, int index) {
-                final question = controller.quizController.questionList[index];
-                final selectedAnswer = controller.quizController.selectedAnswers[index];
+                final QuestionModel question = controller.quizController.questionList[index];
+                final String? selectedAnswer = controller.quizController.selectedAnswers[index];
                 final bool isCorrect = selectedAnswer == question.correctAnswer;
 
                 return ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Text(question.question ?? ''),
-                  subtitle: Text('Selected Answer: $selectedAnswer'),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Selected Answer: ${selectedAnswer??'Not selected'}'),
+                      Text('Correct Answer: ${question.correctAnswer}'),
+                    ],
+                  ),
                   trailing: isCorrect
                       ? const Icon(Icons.check, color: Colors.green)
                       : const Icon(Icons.close, color: Colors.red),
