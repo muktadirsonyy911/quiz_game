@@ -41,12 +41,14 @@ class QuestionWidget extends StatelessWidget {
             children: buildAnswerChoices(),
           ),
           (Get.width * 0.05).verticalSpace,
-          Text(
-            getCorrectAnswer(),
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: getFeedbackColor(),
+          Center(
+            child: Text(
+              getCorrectAnswer(),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: getFeedbackColor(),
+              ),
             ),
           ),
           (Get.width * 0.05).verticalSpace,
