@@ -30,7 +30,6 @@ class QuizController extends GetxController {
     super.onInit();
   }
 
-
   @override
   void onClose() {
     pageController.dispose();

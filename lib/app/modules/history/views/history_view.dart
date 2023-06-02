@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_game/app/commons/extensions/extension_num.dart';
-import 'package:quiz_game/app/commons/services/score_storage.dart';
+import 'package:quiz_game/app/commons/services/db_service/score_storage.dart';
 import 'package:quiz_game/app/commons/values/app_strings.dart';
 import 'package:quiz_game/app/commons/widgets/app_bar_widget.dart';
 import 'package:quiz_game/app/modules/history/controllers/history_controller.dart';

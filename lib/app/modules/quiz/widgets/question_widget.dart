@@ -29,7 +29,7 @@ class QuestionWidget extends StatelessWidget {
       padding: 15.allPadding,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             question.question ?? '',
@@ -61,9 +61,11 @@ class QuestionWidget extends StatelessWidget {
             child: Text(showFeedback == true ? AppStrings.nextText.toUpperCase() : AppStrings.submitText.toUpperCase()),
           ),
           (Get.width * 0.1).verticalSpace,
-          Obx(
-            () => Text(
-                '${AppStrings.timeRemainingText}${Get.find<QuizController>().timerDuration.value} ${AppStrings.secondsText}'),
+          Center(
+            child: Obx(
+              () => Text(
+                  '${AppStrings.timeRemainingText}${Get.find<QuizController>().timerDuration.value} ${AppStrings.secondsText}'),
+            ),
           ),
         ],
       ),

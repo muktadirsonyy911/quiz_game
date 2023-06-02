@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quiz_game/app/commons/services/score_storage.dart';
+import 'package:quiz_game/app/commons/services/db_service/score_storage.dart';
 import 'package:quiz_game/app/commons/utils/log_print.dart';
 
 class Initializer {
