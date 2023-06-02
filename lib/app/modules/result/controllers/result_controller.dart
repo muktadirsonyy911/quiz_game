@@ -15,7 +15,6 @@ class ResultController extends GetxController {
   @override
   void onInit() {
     calculateCorrectAnswers();
-    calculateIncorrectAnswers();
     addScoreData();
     super.onInit();
   }
@@ -30,10 +29,6 @@ class ResultController extends GetxController {
       }
     }
     totalCorrectAnswers.value = correctCount;
-  }
-
-  void calculateIncorrectAnswers() {
-    totalIncorrectAnswers.value = quizController.questionList.length - totalCorrectAnswers.value;
   }
 
   void addScoreData() async {

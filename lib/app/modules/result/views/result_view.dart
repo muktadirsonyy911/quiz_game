@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:quiz_game/app/commons/extensions/extension_num.dart';
 import 'package:quiz_game/app/commons/styles/text_style.dart';
 import 'package:quiz_game/app/commons/values/app_colors.dart';
+import 'package:quiz_game/app/commons/values/app_strings.dart';
 import 'package:quiz_game/app/commons/widgets/app_bar_widget.dart';
 import 'package:quiz_game/app/commons/widgets/custom_button_widget.dart';
 import 'package:quiz_game/app/modules/quiz/models/quiz_response_model.dart';
@@ -14,14 +15,15 @@ class ResultView extends GetView<ResultController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(viewName: 'Result'),
+      appBar: AppBarWidget(viewName: AppStrings.resultText),
       body: Container(
         padding: 15.allPadding,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('(${controller.totalCorrectAnswers} out of ${controller.quizController.selectedAnswers.length})',
+            Text(
+                '(${controller.totalCorrectAnswers} ${AppStrings.outOfText} ${controller.quizController.selectedAnswers.length})',
                 style: StyleText.size20BoldBlack),
             (Get.width * 0.05).verticalSpace,
             ListView.builder(
@@ -39,44 +41,42 @@ class ResultView extends GetView<ResultController> {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Selected Answer: ${selectedAnswer??'Not selected'}'),
-                      Text('Correct Answer: ${question.correctAnswer}'),
+                      Text('${AppStrings.selectedAnsText} ${selectedAnswer ?? AppStrings.notSelectedText}'),
+                      Text('${AppStrings.correctAnsText} ${question.correctAnswer}'),
                     ],
                   ),
                   trailing: isCorrect
-                      ? const Icon(Icons.check, color: Colors.green)
-                      : const Icon(Icons.close, color: Colors.red),
+                      ? Icon(Icons.check, color: AppColors.greenColor)
+                      : Icon(Icons.close, color: AppColors.redColor),
                 );
               },
             ),
             (Get.width * 0.05).verticalSpace,
-            Text('Your final score is: ${controller.quizController.score.value}', style: StyleText.size18BolBlack),
+            Text('${AppStrings.finalScoreText} ${controller.quizController.score.value}',
+                style: StyleText.size18BolBlack),
             (Get.width * 0.1).verticalSpace,
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CustomButtonWidget(
-                  backgroundColor: Colors.teal,
-                    isBold: true, onPressed: controller.onPlayAgainTap, child: Row(
-                      children: [
-                        Icon(Icons.replay_5, color:AppColors.whiteColor,),
-                        (Get.width*0.03).horizontalSpace,
-                        const Text('PLAY AGAIN'),
-                        (Get.width*0.03).horizontalSpace,
-                      ],
-                    )),
+                    backgroundColor: Colors.teal,
+                    isBold: true,
+                    height: 35,
+                    fontSize: 13,
+                    onPressed: controller.onPlayAgainTap,
+                    child: Text(AppStrings.playAgainText.toUpperCase())),
                 CustomButtonWidget(
-                  backgroundColor: Colors.blueGrey,
-                    isBold: true, onPressed: controller.onViewHistoryTap, child: Row(
-                  children: [
-                    Icon(Icons.history, color:AppColors.whiteColor,),
-                    (Get.width*0.03).horizontalSpace,
-                    const Text('VIEW HISTORY'),
-                    (Get.width*0.03).horizontalSpace,
-                  ],
-                )),
+                    backgroundColor: Colors.blueGrey,
+                    isBold: true,
+                    height: 35,
+                    fontSize: 13,
+                    onPressed: controller.onViewHistoryTap,
+                    child: Text(AppStrings.viewHistoryText.toUpperCase())),
               ],
-            )
+            ),
+            (Get.width * 0.05).verticalSpace,
+            CustomButtonWidget(
+                isBold: true, onPressed: controller.onGoToHomeTap, child: Text(AppStrings.goToHomeText.toUpperCase())),
           ],
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quiz_game/app/commons/extensions/extension_num.dart';
 import 'package:quiz_game/app/commons/services/score_storage.dart';
+import 'package:quiz_game/app/commons/values/app_strings.dart';
 import 'package:quiz_game/app/commons/widgets/app_bar_widget.dart';
 import 'package:quiz_game/app/modules/history/controllers/history_controller.dart';
 
@@ -11,15 +12,15 @@ class HistoryView extends GetView<HistoryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(viewName: 'History'),
+      appBar: AppBarWidget(viewName: AppStrings.historyText),
       body: FutureBuilder<void>(
         future: controller.scoreStorage.init(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             final scores = controller.scoreStorage.getScores();
             if (scores.isEmpty) {
-              return const Center(
-                child: Text('No scores available'),
+              return  Center(
+                child: Text(AppStrings.noScoreText),
               );
             }
             return ListView.builder(
@@ -37,8 +38,8 @@ class HistoryView extends GetView<HistoryController> {
                     ),
                   ]),
                   child: ListTile(
-                    title: Text('Date: ${scoreEntry.date.toString()}'),
-                    subtitle: Text('Score: ${scoreEntry.score}'),
+                    title: Text('${AppStrings.dateText} ${scoreEntry.date.toString()}'),
+                    subtitle: Text('${AppStrings.scoreText} ${scoreEntry.score}'),
                   ),
                 );
               },

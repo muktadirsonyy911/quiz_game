@@ -11,7 +11,6 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: const AppBarWidget(viewName: 'Home'),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

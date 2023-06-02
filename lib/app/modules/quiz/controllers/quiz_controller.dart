@@ -69,7 +69,8 @@ class QuizController extends GetxController {
         pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.ease);
         startTimer();
       } else {
-        Get.toNamed(Routes.result);
+        resetTimer();
+        Get.offNamed(Routes.result);
       }
     });
   }
